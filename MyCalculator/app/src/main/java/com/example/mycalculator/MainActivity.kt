@@ -6,62 +6,57 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import com.example.mycalculator.Operations.*
+import com.example.mycalculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var buttonPlus: Button
-    lateinit var buttonMinus: Button
-    lateinit var buttonDiv: Button
-    lateinit var buttonMul: Button
-    lateinit var buttonRes: Button
-    lateinit var buttonClear: Button
-    lateinit var textFinalResult: TextView
+
     var firstNumber: Double = 0.0
     var currentOperation: Operations? = null
+    lateinit var binding:ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initViews()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         addCallBacks()
     }
 
-    private fun initViews() {
-        buttonPlus = findViewById(R.id.btnAdd)
-        buttonMinus = findViewById(R.id.btnSubtract)
-        buttonMul = findViewById(R.id.btnMultiply)
-        buttonDiv = findViewById(R.id.btnDivide)
-        buttonRes = findViewById(R.id.btnEquals)
-        buttonClear = findViewById(R.id.btnClear)
-        textFinalResult = findViewById(R.id.txtInput)
-    }
+
 
     private fun addCallBacks() {
-        buttonClear.setOnClickListener {
+        binding.btnClear.setOnClickListener {
             clearInput()
         }
-        buttonPlus.setOnClickListener {
+        binding.btnAdd.setOnClickListener {
             initOperations(Plus)
         }
-        buttonMinus.setOnClickListener {
+        binding.btnSubtract.setOnClickListener {
             initOperations(Minus)
 
         }
-        buttonDiv.setOnClickListener {
+        binding.btnDivide.setOnClickListener {
             initOperations(Div)
 
         }
-        buttonMul.setOnClickListener {
+        binding.btnMultiply.setOnClickListener {
             initOperations(Mul)
 
         }
-        buttonRes.setOnClickListener {
+        binding.btnEquals.setOnClickListener {
             result()
+        }
+        binding.btnBack.setOnClickListener{
+            backOneStep()
         }
     }
 
+    private fun backOneStep() {
+        binding.txtInput.text = binding.txtInput.text.subSequence(0,binding.txtInput.text.length-1)
+    }
+
     private fun result() {
-        val secondNumber = textFinalResult.text.toString().toDouble()
-        textFinalResult.text = when (currentOperation) {
+        val secondNumber = binding.txtInput.text.toString().toDouble()
+        binding.txtInput.text = when (currentOperation) {
             Plus -> {
                 (firstNumber + secondNumber).toString()
             }
@@ -78,18 +73,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun initOperations(op: Operations) {
-        firstNumber = textFinalResult.text.toString().toDouble()
+        firstNumber = binding.txtInput.text.toString().toDouble()
         clearInput()
         currentOperation = op
     }
     private fun clearInput() {
-        textFinalResult.hint = textFinalResult.text
-        textFinalResult.text = ""
+        binding.txtInput.hint = binding.txtInput.text
+        binding.txtInput.text = ""
     }
     fun onClickNumbers(v: View) {
         val number = (v as Button).text.toString()
-        val oldText = textFinalResult.text.toString()
-        textFinalResult.text = oldText + number
+        val oldText = binding.txtInput.text.toString()
+        binding.txtInput.text = oldText + number
 
     }
 
