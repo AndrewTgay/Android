@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun addCallBacks() {
         binding.btnClear.setOnClickListener {
-            clearInput()
+            clearInputAtAll()
         }
         binding.btnAdd.setOnClickListener {
             initOperations(Plus)
@@ -48,6 +48,14 @@ class MainActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener{
             backOneStep()
         }
+    }
+
+    private fun clearInputAtAll() {
+        binding.txtInput.hint = "0"
+        binding.txtInput.text = ""
+        firstNumber=0.0
+        currentOperation=null
+
     }
 
     private fun backOneStep() {
@@ -73,9 +81,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun initOperations(op: Operations) {
-        firstNumber = binding.txtInput.text.toString().toDouble()
-        clearInput()
-        currentOperation = op
+        if(binding.txtInput.text!="") {
+            firstNumber = binding.txtInput.text.toString().toDouble()
+            clearInput()
+            currentOperation = op
+        }
     }
     private fun clearInput() {
         binding.txtInput.hint = binding.txtInput.text
