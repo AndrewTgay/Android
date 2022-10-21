@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="txtbigsize">30sp</dimen>
+    <dimen name="txtmargin">14dp</dimen>
+    <dimen name="btnWidth">180dp</dimen>
+    <dimen name="floatingbtnmargin">15dp</dimen>
+</resources>

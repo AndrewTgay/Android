@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">ShoesAppFWD</string>
+    <string name="logintxt">Login</string>
+    <string name="registertxt">Register</string>
+    <string name="enter_your_passwordtxt">Enter your Password</string>
+    <string name="passwordtxt">Password</string>
+    <string name="enter_your_emailtxt">Enter your Email</string>
+    <string name="emailtxt">Email</string>
+    <string name="welcometxt1">Welcome to the shop app applicatons</string>
+    <string name="welcometxt2">hope to ejoy my app</string>
+    <string name="nextbtn">Next</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="instructiontxt1">my app is so easy to use for arranging you sheos data</string>
+    <string name="plus">+</string>
+    <string name="shoe_name">Shoe Name</string>
+    <string name="enter_shoe_name">Enter Shoe Name</string>
+    <string name="company">Company</string>
+    <string name="enter_company_name">Enter Company Name</string>
+    <string name="enter_shoes_size">Enter Shoes size</string>
+    <string name="shoe_size">Shoe Size</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+    <string name="cancle">Cancle</string>
 </resources>

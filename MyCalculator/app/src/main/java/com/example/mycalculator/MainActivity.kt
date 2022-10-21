@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearInputAtAll() {
-        binding.txtInput.hint = "0"
+        binding.txtInput.hint = ""
         binding.txtInput.text = ""
         firstNumber=0.0
         currentOperation=null
