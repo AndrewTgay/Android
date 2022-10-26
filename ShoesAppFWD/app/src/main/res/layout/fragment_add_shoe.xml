@@ -2,6 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="ShoeVar"
+            type="com.example.shoesappfwd.models.ShoeVM" />
+    </data>
+
+    <!-- it is easier to use linearlayout here because in my design it is just vertical linear
+    so every element be in the same alighment but down to each others so i dont have -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/txtmargin"
+            android:text="@={ShoeVar.name}"
             android:hint="@string/enter_shoe_name" />
 
         <TextView
@@ -28,6 +37,7 @@
             android:text="@string/company" />
 
         <EditText
+            android:text="@={ShoeVar.company}"
             android:id="@+id/edShoeCompany"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,6 +51,7 @@
             android:text="@string/shoe_size" />
 
         <EditText
+            android:text="@={ShoeVar.size}"
             android:id="@+id/edShoSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,6 +66,7 @@
             android:text="@string/description" />
 
         <EditText
+            android:text="@={ShoeVar.description}"
             android:id="@+id/edDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

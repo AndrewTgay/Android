@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.shoesappfwd.databinding.FragmentAddShoeBinding
+import com.example.shoesappfwd.models.ShoeVM
 import com.example.shoesappfwd.models.ShoeViewmodel
 import com.udacity.shoestore.models.Shoe
 
@@ -24,6 +25,7 @@ class AddShoeFragment : Fragment() {
     ): View? {
         val viewModel = ViewModelProvider(this).get(ShoeViewmodel::class.java)
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_add_shoe,container,false)
+     binding.shoeVar = ShoeVM("","","","",null)
         callbacks()
         return binding.root
     }
@@ -51,12 +53,8 @@ class AddShoeFragment : Fragment() {
         else if(binding.edShoeCompany.text.isEmpty())
             toastMSG("Shoe Description")
         else{
-            val shoe = Shoe(
-                binding.edShoeName.text.toString(),
-                binding.edShoSize.text.toString().toDouble(),
-                binding.edShoeCompany.text.toString(),
-                binding.edDescription.text.toString(),
-                null)
+            val shoe = binding.shoeVar!!.toShoe()
+        //    Toast.makeText(context,Shoe.toString(),Toast.LENGTH_LONG).show()
             findNavController().navigate(AddShoeFragmentDirections.actionAddShoeFragmentToShoeListFragment(shoe))
 
         }

@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <!-- i use constrainlayout because of floatingactionbutton so it is easier to put it anyway -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <!-- i choose linearlayout because it is easier for adding items to it -->
             <LinearLayout
                 android:orientation="vertical"
                 android:id="@+id/linearlayout"

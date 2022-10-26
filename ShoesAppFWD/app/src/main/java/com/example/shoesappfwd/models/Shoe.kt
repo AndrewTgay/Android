@@ -5,7 +5,7 @@ import android.os.Parcelable
 import android.widget.Toast
 
 
-data class Shoe(
+class Shoe(
     var name: String?, var size: Double, var company: String?, var description: String?,
     val images: List<String>? = mutableListOf()) : Parcelable {
     constructor(parcel: Parcel) : this(
