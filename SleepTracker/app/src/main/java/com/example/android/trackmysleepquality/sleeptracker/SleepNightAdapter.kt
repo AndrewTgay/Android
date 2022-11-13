@@ -37,7 +37,6 @@ class SleepNightAdapter(val clickListner: SleepNightListner) : ListAdapter<Sleep
 
 
     class ViewHolder private constructor(val binding : ListItemSleepNightBinding) : RecyclerView.ViewHolder(binding.root){
-
         fun bind(item: SleepNight , clickListner: SleepNightListner) {
             binding.sleepNightViewVariable = item
             binding.clickListner = clickListner

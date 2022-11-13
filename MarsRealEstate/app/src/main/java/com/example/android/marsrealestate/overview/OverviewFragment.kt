@@ -19,11 +19,15 @@ package com.example.android.marsrealestate.overview
 
 import android.os.Bundle
 import android.view.*
+import android.view.animation.Animation
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.android.marsrealestate.R
 import com.example.android.marsrealestate.databinding.FragmentOverviewBinding
 import com.example.android.marsrealestate.databinding.GridViewItemBinding
+import com.example.android.marsrealestate.network.MarsApiFilter
 
 /**
  * This fragment shows the the status of the Mars real-estate web services transaction.
@@ -49,9 +53,33 @@ class OverviewFragment : Fragment() {
         binding.viewModel = viewModel
 
         setHasOptionsMenu(true)
-        binding.photosGrid.adapter = PhotoGridAdapter( )
+        binding.photosGrid.adapter = PhotoGridAdapter(PhotoGridAdapter.onCLickListener{
+         viewModel.goToSelectedProperty(it)
+        })
+
+        viewModel.navigateToSelectedProperty.observe(viewLifecycleOwner,Observer{
+            if (null != it){
+                findNavController().navigate(OverviewFragmentDirections.actionShowDetail(it))
+                viewModel.navigationToSelectedPropertyIsDone()
+            }
+        })
+
+        setHasOptionsMenu(true)
         return binding.root
     }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        viewModel.updateFilter(
+            when(item.itemId){
+                R.id.show_rent_menu->MarsApiFilter.SHOW_RENT
+                R.id.show_buy_menu->MarsApiFilter.SHOW_BUY
+                else->MarsApiFilter.SHOW_ALL
+            }
+        )
+        return super.onOptionsItemSelected(item)
+    }
+
     /**
      * Inflates the overflow menu that contains filtering options.
      */
