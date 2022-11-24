@@ -81,7 +81,6 @@ class MainActivity : AppCompatActivity() {
             override fun onAnimationStart(animation: Animator?) {
                 view.isEnabled = false
             }
-
             override fun onAnimationEnd(animation: Animator?) {
                 view.isEnabled = true
             }
