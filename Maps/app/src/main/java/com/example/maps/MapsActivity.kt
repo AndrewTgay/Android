@@ -66,7 +66,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         setMapLongClick(map)
         setPoiClick(map)
         enableMyLocation()
-       // setMapStyle(map)
+        setMapStyle(map)
     }
 
 
